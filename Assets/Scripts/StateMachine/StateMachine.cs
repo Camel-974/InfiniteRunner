@@ -3,27 +3,27 @@ using UnityEngine;
 public class StateMachine : MonoBehaviour
 {
     // the current active state
-    private IState _currentState;
+    public IState CurrentState{ get; private set; }
     
     // change to a new state
     public void ChangeState(IState newState)
     {
         // check and exit the current state
-        if (_currentState != null)
+        if (CurrentState != null)
         {
-            _currentState.Exit();
+            CurrentState.Exit();
         }
         
         // enter in the new state
-        _currentState = newState;
-        _currentState.Enter();
+        CurrentState = newState;
+        CurrentState.Enter();
     }
     void Update()
     {
         // update the current state
-        if (_currentState != null)
+        if (CurrentState != null)
         {
-            _currentState.Update();
+            CurrentState.Update();
         }
     }
 }

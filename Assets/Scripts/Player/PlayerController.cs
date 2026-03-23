@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -60,16 +61,34 @@ public class PlayerController : MonoBehaviour
     {
         _rigidBody.linearVelocity = new Vector3(_rigidBody.linearVelocity.x, _jumpForce, _rigidBody.linearVelocity.z);
     }
+    
+    private bool _isGrounded = false;
+
+    public bool IsGrounded()
+    {
+        return _isGrounded;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            _isGrounded = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+            {
+            _isGrounded = false;
+            }
+    }
 
     public void Charge()
     {
         //todo : destroy obstacles
         Debug.Log("Charge");
-    }
-    
-    public bool IsGrounded()
-    {
-        return Physics.Raycast(transform.position, -Vector3.down, 1.1f);
     }
     
     // ----- INPUTS FUNCTIONS -----
@@ -84,6 +103,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnJump(InputValue value)
     {
+        if (StateMachine.CurrentState == JumpingState) return;
+        if (!_isGrounded) return;
+        
         if (StateMachine != null)
             StateMachine.ChangeState(JumpingState);
     }
@@ -108,6 +130,4 @@ public class PlayerController : MonoBehaviour
         float totalWidth = (_laneCount - 1) * _laneWidth;
         return (lane * _laneWidth) - (totalWidth / 2);
     }
-
-
 }
