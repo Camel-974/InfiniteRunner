@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Over ! Distance : " + Distance);
         // TODO : Load GameOver scene
         
+        
         // update record if beaten
         if (Distance > _gameData.DistanceRecord)
         {
@@ -91,6 +92,13 @@ public class GameManager : MonoBehaviour
         
         // save the game
         SaveManager.Instance.Save(_gameData);
-            
+        
+        // load gameover scene after 2 sec
+        Invoke("GoToGameOver", 2f);
+    }
+
+    public void GoToGameOver()
+    {
+        SceneLoader.Instance.LoadGameOver();
     }
 }
