@@ -162,7 +162,9 @@ public class PlayerController : MonoBehaviour
         
         Debug.Log("Player taking damage");
         
-        // TODO: Remove a life (GameManager will do this later)
+        // tell to the gameManager remove a life
+        GameManager.Instance.LoseLife();
+        
         // become invicible temporarily
         lifeState = LifeState.Invincible;
         Invoke("BecomeVulnerable", 2f);

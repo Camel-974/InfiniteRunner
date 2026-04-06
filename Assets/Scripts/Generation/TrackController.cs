@@ -13,6 +13,9 @@ public class TrackController : MonoBehaviour
 
     // Singleton
     public static TrackController Instance { get; private set; }
+    
+    // get the track speed
+    public float TrackSpeed => _translationSpeed;
 
     // List of all currently active chunks
     private List<ChunkController> _instancedChunks = new List<ChunkController>();
