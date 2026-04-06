@@ -15,4 +15,5 @@ public class ChunkController : MonoBehaviour
     {
         return transform.position.z < -_chunkLength;
     }
+    
 }

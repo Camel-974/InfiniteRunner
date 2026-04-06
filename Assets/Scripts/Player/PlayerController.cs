@@ -4,6 +4,15 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public enum LifeState
+    {
+        Alive,
+        Invincible,
+        Dead
+    }
+    
+    private LifeState lifeState = LifeState.Alive;
+    
     [Header("Lane Settings")] 
     [SerializeField] private float _laneWidth = 2f;
     [SerializeField] private float _laneSwitchSpeed = 10f;
@@ -80,9 +89,9 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")
-            {
-            _isGrounded = false;
-            }
+        {
+            _isGrounded = false; 
+        }
     }
 
     public void Charge()
@@ -129,5 +138,38 @@ public class PlayerController : MonoBehaviour
     {
         float totalWidth = (_laneCount - 1) * _laneWidth;
         return (lane * _laneWidth) - (totalWidth / 2);
+    }
+    
+    // make visible gizmo for each lane
+    private void OnDrawGizmos()
+    {
+        float totalWidth = (_laneCount - 1) * _laneWidth;
+
+        for (int i = 0; i < _laneCount; i++)
+        {
+            float xPos = (i * _laneWidth) - (totalWidth / 2);
+
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireCube(new Vector3(xPos, 0.1f, transform.position.z), new Vector3(_laneWidth, 0.1f, 30f));
+        }
+    }
+
+    // ----- TAKE DAMAGE DTG -----
+    public void TakeDamage()
+    {
+        // take damage only if alive
+        if (lifeState != LifeState.Alive) return;
+        
+        Debug.Log("Player taking damage");
+        
+        // TODO: Remove a life (GameManager will do this later)
+        // become invicible temporarily
+        lifeState = LifeState.Invincible;
+        Invoke("BecomeVulnerable", 2f);
+    }
+
+    private void BecomeVulnerable()
+    {
+        lifeState = LifeState.Alive;
     }
 }
