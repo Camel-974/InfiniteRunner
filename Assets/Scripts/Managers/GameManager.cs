@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public int CurrentLives { get; private set; }
     
     private bool _isGameOver = false;
+    private GameData _gameData;
 
     private void Awake()
     {
@@ -30,6 +31,11 @@ public class GameManager : MonoBehaviour
     {
         //start with the correct numbver of lives
         CurrentLives = _startingLives;
+        
+        //load saved data
+        _gameData = SaveManager.Instance.Load();
+        Debug.Log("Distance record : " + _gameData.DistanceRecord);
+        
     }
 
     private void Update()
@@ -72,5 +78,19 @@ public class GameManager : MonoBehaviour
         _isGameOver = true;
         Debug.Log("Game Over ! Distance : " + Distance);
         // TODO : Load GameOver scene
+        
+        // update record if beaten
+        if (Distance > _gameData.DistanceRecord)
+        {
+            _gameData.DistanceRecord = Distance;
+        }
+        
+        // add Firefly and cows to total
+        _gameData.TotalFireflies += Fireflies;
+        _gameData.TotalSavedCows += SavedCows;
+        
+        // save the game
+        SaveManager.Instance.Save(_gameData);
+            
     }
 }
