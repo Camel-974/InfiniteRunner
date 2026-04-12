@@ -13,7 +13,7 @@ public class RunningState : IState
 
     public void Enter()
     {
-        Debug.Log("Entering RunningState");
+        //Debug.Log("Entering RunningState");
     }
 
     public void Update()
@@ -23,6 +23,6 @@ public class RunningState : IState
 
     public void Exit()
     {
-        Debug.Log("Exiting RunningState");
+        //Debug.Log("Exiting RunningState");
     }
 }

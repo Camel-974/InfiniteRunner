@@ -114,7 +114,7 @@ public class PlayerController : MonoBehaviour
 
     public void Charge()
     {
-        Debug.Log("Bessy is charging !");
+        //Debug.Log("Bessy is charging !");
     }
 
     public void StartMegaCharge()
@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour
         // Grow Bessy to 3 lanes wide
         transform.localScale = new Vector3(3f, 1f, 1f);
 
-        Debug.Log("Mega Charge started !");
+        //Debug.Log("Mega Charge started !");
     }
 
     public void EndMegaCharge()
@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour
         // Back to alive
         lifeState = LifeState.Alive;
 
-        Debug.Log("Mega Charge ended !");
+        //Debug.Log("Mega Charge ended !");
     }
 
     public bool IsGrounded()

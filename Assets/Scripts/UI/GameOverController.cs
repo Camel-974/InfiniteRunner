@@ -27,6 +27,7 @@ public class GameOverController : MonoBehaviour
     // called by the Menu Button
     public void OnMenuButton()
     {
+        GameManager.Instance.ResetGame();
         SceneLoader.Instance.LoadMainMenu();
     }
     

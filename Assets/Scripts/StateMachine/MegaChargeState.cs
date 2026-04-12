@@ -12,7 +12,7 @@ public class MegaChargeState : IState
 
     public void Enter()
     {
-        Debug.Log("Entering MegaCharge State");
+        //Debug.Log("Entering MegaCharge State");
         
         // reset timer
         _megaChargeTimer = 0f;
@@ -33,7 +33,7 @@ public class MegaChargeState : IState
 
     public void Exit()
     {
-        Debug.Log("Exiting MegaCharge State");
+        //Debug.Log("Exiting MegaCharge State");
         
         // end the meGACHarge
         _player.EndMegaCharge();

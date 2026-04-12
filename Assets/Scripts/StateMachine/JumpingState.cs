@@ -11,7 +11,7 @@ public class JumpingState : IState
 
     public void Enter()
     {
-        Debug.Log("Entering JumpingState");
+        //Debug.Log("Entering JumpingState");
         _player.Jump();
     }
 
@@ -25,6 +25,6 @@ public class JumpingState : IState
 
     public void Exit()
     {
-        Debug.Log("Exiting JumpingState");
+        //Debug.Log("Exiting JumpingState");
     }
 }

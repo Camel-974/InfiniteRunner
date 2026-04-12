@@ -12,7 +12,7 @@ public class ChargingState : IState
 
     public void Enter()
     {
-        Debug.Log("Entering ChargingState");
+        //Debug.Log("Entering ChargingState");
         _chargerTimer = 0f;
         _player.Charge();
     }
@@ -30,7 +30,7 @@ public class ChargingState : IState
 
     public void Exit()
     {
-        Debug.Log("Exiting ChargingState");
+        //Debug.Log("Exiting ChargingState");
         _chargerTimer = 0f;
     }
 }
