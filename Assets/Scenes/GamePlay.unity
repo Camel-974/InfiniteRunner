@@ -455,6 +455,7 @@ MonoBehaviour:
   _activeChunkCount: 4
   _behindPlayerDistance: -10
   _chunksPool:
+  - {fileID: 4962725968909523143, guid: ba4c4c7597f30224d832bc7a0ccdcdfa, type: 3}
   - {fileID: 6148254226445771617, guid: d1df51b68251ac44da097e5cad101462, type: 3}
   - {fileID: 6297235124982506571, guid: e02523081b498554fb27c537d6d47e20, type: 3}
   - {fileID: 2471742024123119250, guid: 86fb60eafd5b3e44d953ec01a62b64bb, type: 3}
@@ -1576,7 +1577,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 67.5
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

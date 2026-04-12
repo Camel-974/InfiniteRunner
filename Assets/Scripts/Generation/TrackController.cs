@@ -84,7 +84,7 @@ public class TrackController : MonoBehaviour
             if (i == 0)
             {
                 // First chunk at origin
-                var baseChunk = AddChunk(transform.position);
+                ChunkController baseChunk = Instantiate(_chunksPool[0], transform.position, Quaternion.identity);
                 _instancedChunks.Add(baseChunk);
                 continue;
             }
@@ -104,7 +104,7 @@ public class TrackController : MonoBehaviour
         }
 
         // Pick a random chunk from the pool
-        var index = Random.Range(0, _chunksPool.Length);
+        var index = Random.Range(1, _chunksPool.Length);
         ChunkController chunk = Instantiate(_chunksPool[index], position, Quaternion.identity);
 
         return chunk;

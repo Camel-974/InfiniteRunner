@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     {
         if (Instance != null) { Destroy(gameObject); return;}
         Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -95,6 +96,18 @@ public class GameManager : MonoBehaviour
         
         // load gameover scene after 2 sec
         Invoke("GoToGameOver", 2f);
+    }
+    
+    // reset the score before restart a new game
+    public void ResetGame()
+    {
+        CurrentLives = _startingLives;
+        Fireflies = 0;
+        SavedCows = 0;
+        Distance = 0;
+        _isGameOver = false;
+        
+        Debug.Log("Game reset ! Starting new run");
     }
 
     public void GoToGameOver()
